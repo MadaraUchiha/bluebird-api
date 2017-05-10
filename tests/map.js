@@ -29,6 +29,11 @@ describe("map", () => {
         });
         assert.deepEqual(arr, [2,3,4]);
     });
+
+    it("should return a bluebird promise (and not a native one)", async () => {
+        var promise = Promise.map([1, 2, 3], Promise.resolve);
+        assert(promise instanceof Promise, 'Expected Promise.map() to return a Bluebird promise.');
+    })
 });
 
 const specify = it;
